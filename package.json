@@ -1,0 +1,17 @@
+{
+  "name": "ampersand-fire",
+  "version": "1.0.0",
+  "description": "Port of BackboneFire for Ampersand",
+  "main": "ampersand-fire.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Tyler Porter <porteta@gmail.com> (https://github.com/porteta)",
+  "license": "ISC",
+  "dependencies": {
+    "ampersand-collection": "^1.4.0",
+    "ampersand-model": "^4.0.3",
+    "firebase": "^2.1.2",
+    "underscore": "^1.7.0"
+  }
+}
