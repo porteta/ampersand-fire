@@ -6,7 +6,7 @@
  * AmpersandFire 0.0.0
  * License: MIT
  */
- 
+
 var _ = require('underscore');
 var AmpersandModel = require('ampersand-model');
 var AmpersandCollection = require('ampersand-collection');
@@ -355,7 +355,7 @@ AmpersandFire.Model = AmpersandModel.extend({
     },
 
     sync: function(method, model, options) {
-        AmpersandFire.sync(method, model, options);
+        return AmpersandFire.sync(method, model, options);
     },
 
     /**
@@ -542,6 +542,9 @@ var SyncCollection = (function() {
     }
 
     SyncCollection.protoype = {
+        isModel: function (model) {
+            return this.model && model instanceof AmpersandModel;
+        },
         add: function(models, options) {
             // prepare models
             var parsed = this._parseModels(models);
@@ -678,7 +681,8 @@ var SyncCollection = (function() {
             } else {
                 AmpersandCollection.prototype.add.call(this, [model]);
             }
-            this.get(model.id)._remoteAttributes = model;
+            if(this.get == 'function')
+                this.get.call(this, model.id)._remoteAttributes = model;
         },
 
         // TODO: child_moved is emitted when the priority for a child is changed, so it
